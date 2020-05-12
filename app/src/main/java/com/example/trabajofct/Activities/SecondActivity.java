@@ -17,10 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import com.example.trabajo1.R;
+import com.example.trabajofct.Fragments.ModificarFragment;
 import com.example.trabajofct.Modules.Usuarios;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +38,8 @@ public class SecondActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private TextView NombreUsuario;
     private DatabaseReference firebase;
+    private String id;
+    private FirebaseAuth autorizacion = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,36 +53,17 @@ public class SecondActivity extends AppCompatActivity {
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
         drawerLayout = (DrawerLayout) findViewById(R.id.dlayout);
         navigationView= (NavigationView) findViewById(R.id.navview);
-        NombreUsuario = (TextView) findViewById(R.id.nombreusuario);
+        View headerView = navigationView.getHeaderView(0);
+        NombreUsuario = (TextView) headerView.findViewById(R.id.nombreusuario);
         firebase = FirebaseDatabase.getInstance().getReference();
 
-        firebase.child("Usuarios").addChildEventListener(new ChildEventListener() {
+        id = autorizacion.getCurrentUser().getUid();
+
+        firebase.child("Usuarios").child(id).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                for(DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
-                    Usuarios u = objSnapshot.getValue(Usuarios.class);
-                    if (u.getNombre()!=null || u.getEmail()!=null) {
-
-                        NombreUsuario.setText(u.getNombre()+ " " + u.getApellidos());
-
-                    }
-
-                }
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Usuarios usuarios = dataSnapshot.getValue(Usuarios.class);
+                NombreUsuario.setText(""+usuarios.getNombre());
             }
 
             @Override
@@ -85,15 +71,6 @@ public class SecondActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
 
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -117,6 +94,33 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                boolean fragmentTransaction = false;
+                Fragment fragment = null;
+
+                switch (menuItem.getItemId()){
+                    case R.id.menu_modificar:
+                        fragment = new ModificarFragment();
+                        fragmentTransaction = true;
+                        break;
+                }
+
+                if (fragmentTransaction) {
+                    changeFragment(fragment, menuItem);
+                    drawerLayout.closeDrawers();
+                }
+                return false;
+            }
+        });
+
+    }
+
+    private void changeFragment(Fragment fragment, MenuItem menuItem) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
+        menuItem.setChecked(true);
+        getSupportActionBar().setTitle(menuItem.getTitle());
     }
 
     public void setSupportActionBar(Toolbar toolbar) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".Activities.MainActivity">
+    tools:context="com.example.trabajofct.Activities.RecuperarContrasena">
 
 
 

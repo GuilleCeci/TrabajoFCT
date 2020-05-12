@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="20dp"
-    tools:context="com.example.trabajofct.Activities.RegisterActivity">
+    android:orientation="vertical"
+    tools:context="com.example.trabajofct.Fragments.ModificarFragment">
 
     <EditText
-        android:id="@+id/editTextNombre"
+        android:id="@+id/editTextNombreModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"/>
 
     <EditText
-        android:id="@+id/editTextApellidos"
+        android:id="@+id/editTextApellidosModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Apellidos"/>
 
     <EditText
-        android:id="@+id/editTextEdad"
+        android:id="@+id/editTextEdadModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Edad"/>
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/editTextEmailModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -37,7 +36,7 @@
 
 
     <EditText
-        android:id="@+id/editTextContraseña"
+        android:id="@+id/editTextContraseñaModificar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -51,19 +50,19 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnSubirFoto"
+            android:id="@+id/btnSubirFotoModificar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Subir Foto de perfil"
             android:layout_marginTop="20dp"
             />
         <Button
-            android:id="@+id/btnRegistrar"
+            android:id="@+id/btnModificar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar"
+            android:text="Modificar"
             android:layout_marginTop="20dp"
-             />
+            />
 
 
 

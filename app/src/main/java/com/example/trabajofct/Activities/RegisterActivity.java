@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String apellidos;
     private int edad;
     private Uri uri;
+    private String id;
     private final int GALLERY_INTENT = 1;
 
     private FirebaseAuth Autorizacion;
@@ -123,7 +124,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     Usuarios A = new Usuarios(nombre, apellidos, email , edad, contraseña);
-                    String id = Autorizacion.getCurrentUser().getUid();
+                    id = Autorizacion.getCurrentUser().getUid();
 
                     BBDD.child("Usuarios").child(id).setValue(A).addOnCompleteListener(new OnCompleteListener<Void>() {
 

@@ -16,11 +16,17 @@ import android.widget.Toast;
 
 
 import com.example.trabajo1.R;
+import com.example.trabajofct.Modules.Usuarios;
 import com.example.trabajofct.Utils.Util;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     private SharedPreferences preferences;
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private String email="";
     private String contraseña="";
     private FirebaseAuth Autorizacion;
+    private Usuarios usuarios;
+    private DatabaseReference firebase = FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     if (loginUser()){
                         //AdvanceActivity();
                         saveOnPreferences(email, contraseña);
+
                     }
                 }//si los campos email y contraseña estan vacios escribe el siguiente mensaje
                 else {
@@ -119,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //metodo para logearse
                 if (task.isSuccessful()){
+
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
