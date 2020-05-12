@@ -98,11 +98,7 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
         }
     }
-    /*private void AdvanceActivity() {
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }*/
+
     private void bindUI() {
 
         remember= (Switch) findViewById(R.id.remember);
