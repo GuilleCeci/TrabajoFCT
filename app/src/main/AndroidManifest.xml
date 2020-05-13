@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.example.trabajofct.Activities.GestionarActivity"></activity>
         <activity android:name="com.example.trabajofct.Activities.RecuperarContrasena" />
-        <activity android:name="com.example.trabajofct.Activities.SecondActivity" />
+        <activity android:name="com.example.trabajofct.Activities.GestionarActivity" />
         <activity android:name="com.example.trabajofct.Activities.RegisterActivity" />
         <activity android:name="com.example.trabajofct.Utils.Util" />
         <activity android:name="com.example.trabajofct.Activities.SplashActivity">

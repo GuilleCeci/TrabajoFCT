@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.trabajo1.R;
-import com.example.trabajofct.Activities.SecondActivity;
+import com.example.trabajofct.Activities.GestionarActivity;
 import com.example.trabajofct.Modules.Usuarios;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -102,7 +102,7 @@ public class ModificarFragment extends Fragment {
                 firebase.child("Usuarios").child(id).child("email").setValue(editTextEmailModificar.getText().toString());
                 firebase.child("Usuarios").child(id).child("contraseña").setValue(editTextContraseñaModificar.getText().toString());
 
-                Intent intent = new Intent(getContext(), SecondActivity.class);
+                Intent intent = new Intent(getContext(), GestionarActivity.class);
                 startActivity(intent);
             }
         });
