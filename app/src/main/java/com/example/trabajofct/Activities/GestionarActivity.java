@@ -1,7 +1,6 @@
 package com.example.trabajofct.Activities;
 
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -169,13 +168,16 @@ public class GestionarActivity extends AppCompatActivity {
 
 
     /*private void setTabLayout() {
+
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.addTab(tabLayout.newTab().setText("Alumnos"));
         tabLayout.addTab(tabLayout.newTab().setText("Asignaturas"));
         tabLayout.addTab(tabLayout.newTab().setText("Grupos"));
+
     }*/
 
     /*private void setViewPager() {
+
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
