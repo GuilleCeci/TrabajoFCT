@@ -1,6 +1,7 @@
 package com.example.trabajofct.Adapters;
 
 
+import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -14,16 +15,11 @@ import static com.example.trabajofct.Activities.GestionarActivity.ASIGNATURAS_FR
 import static com.example.trabajofct.Activities.GestionarActivity.GRUPOS_FRAGMENT;
 
 public class PagerAdapter extends FragmentPagerAdapter {
-
-    private int numberOfTabs;
-
-
-
-
     private int TabsNumber;
 
 
-    public PagerAdapter(FragmentManager fm, int TabsNumber) {
+    public PagerAdapter(FragmentManager fm, int TabsNumber, Context context) {
+
         super(fm);
         this.TabsNumber = TabsNumber;
     }
